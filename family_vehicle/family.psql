@@ -1,0 +1,25 @@
+
+create table if not exists family (
+    family_id serial primary key,
+    name varchar
+);
+
+create table if not exists person  (
+    person_id serial primary key,
+    name varchar(25),
+    family_id integer references family
+);
+
+create table if not exists vehicle (
+    vehicle_id serial primary key,
+    name varchar(25)
+);
+
+create table if not exists vehicle_person (
+    vehicle_id references vehicle,
+    person_id references person
+)
+
+drop table family;
+drop table person;
+drop table vehicle;
