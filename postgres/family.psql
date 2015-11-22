@@ -63,3 +63,11 @@ where f.name = 'Singh'
 and p.name = 'Raj'
 and p.person_id = vp.person_id
 and vp.vehicle_id = v.vehicle_id;
+
+-get all the cars that Andrea can't drive
+select v.name
+from family f, person p, vehicle v, vehicle_person vp
+where f.name = 'Singh'
+and p.name = "Andrea'
+and p.person_id = vp.person_id
+left outer join vp.vehicle_id = v.vehicle_id;
