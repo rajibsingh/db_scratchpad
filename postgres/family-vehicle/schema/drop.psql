@@ -1,0 +1,6 @@
+
+drop table family cascade;
+drop table person cascade;
+drop table vehicle cascade;
+drop table vehicle_person cascade;
+
