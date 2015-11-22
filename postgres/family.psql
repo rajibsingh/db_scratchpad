@@ -1,10 +1,11 @@
 
+--create and seed
 create table if not exists family (
     family_id serial primary key,
     name varchar
 );
 
-insert into family (name) values ('Singh);
+insert into family (name) values ('Singh');
 
 create table if not exists person  (
     person_id serial primary key,
@@ -27,12 +28,26 @@ insert into vehicle (name) values ('Leaf');
 insert into vehicle (name) values ('RX-7');
 
 create table if not exists vehicle_person (
-    vehicle_id references vehicle,
-    person_id references person,
+    vehicle_id integer references vehicle,
+    person_id integer references person,
     primary key(vehicle_id, person_id)
 );
 
+insert into vehicle_person (vehicle_id, person_id) values (1,1);
+insert into vehicle_person (vehicle_id, person_id) values (2,1);
+insert into vehicle_person (vehicle_id, person_id) values (3,1);
+insert into vehicle_person (vehicle_id, person_id) values (1,2);
+insert into vehicle_person (vehicle_id, person_id) values (2,2);
 
-drop table family;
-drop table person;
-drop table vehicle;
+
+--drop tables
+drop table family cascade;
+drop table person cascade;
+drop table vehicle cascade;
+drop table vehicle_person cascade;
+
+--query
+--- get all the cars that Andrea in the Singh family can drive
+select *
+from family f, person p, vehicle v, vehicle_person vp
+where 
