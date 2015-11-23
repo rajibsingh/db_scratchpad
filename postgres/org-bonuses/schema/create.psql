@@ -1,0 +1,32 @@
+
+create table if not exists employee (
+    employee_id serial primary key,
+    name varchar
+);
+
+insert into family (name) values ('Singh');
+
+create table if not exists person  (
+    person_id serial primary key,
+    name varchar(25),
+    family_id integer references family
+);
+
+insert into person (name, family_id) values ('Raj', 1);
+insert into person (name, family_id) values ('Andrea', 1);
+insert into person (name, family_id) values ('Ravi', 1);
+insert into person (name, family_id) values ('Sophie', 1);
+
+create table if not exists vehicle (
+    vehicle_id serial primary key,
+    name varchar(25)
+);
+
+insert into vehicle (name) values ('Protege');
+insert into vehicle (name) values ('Leaf');
+insert into vehicle (name) values ('RX-7');
+
+create table if not exists vehicle_person (
+    vehicle_id integer references vehicle,
+    person_id integer references person,
+    primary key(vehicle_id, person_id)
