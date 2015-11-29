@@ -4,9 +4,8 @@ create table if not exists employee (
     name varchar
 );
 
-insert into family (name) values ('Singh');
 
-create table if not exists person  (
+create bonuses if not exists person  (
     person_id serial primary key,
     name varchar(25),
     family_id integer references family
